@@ -27,8 +27,8 @@
     BantangTableViewCell *cell = (BantangTableViewCell*)[fromViewController.tableView cellForRowAtIndexPath:[[fromViewController.tableView indexPathsForSelectedRows] firstObject]];
     NSLog(@"%s,line num = %d \n %ld",__func__,__LINE__,[fromViewController.tableView indexPathForSelectedRow].row);
 
-    UIView *cellImageSnapshot = [cell.imaView snapshotViewAfterScreenUpdates:YES];
-    cellImageSnapshot.frame = [containerView convertRect:cell.imaView.frame fromView:cell.imaView.superview];
+    UIView *cellImageSnapshot = [cell.imageView snapshotViewAfterScreenUpdates:YES];
+    cellImageSnapshot.frame = [containerView convertRect:cell.imageView.frame fromView:cell.imageView.superview];
     NSLog(@"%s,line num = %d \n %@",__func__,__LINE__,NSStringFromCGRect([containerView convertRect:cell.imaView.frame fromView:cell.imaView.superview]));
     cell.imaView.hidden = YES;
     
@@ -44,7 +44,7 @@
         toViewController.view.alpha = 1.0;
         
         // Move the cell snapshot so it's over the second view controller's image view
-        CGRect frame = [containerView convertRect:toViewController.imageView.frame fromView:toViewController.view];
+        CGRect frame = [containerView convertRect:toViewController.imageView.frame fromView:toViewController.imageView.superview];
 
         cellImageSnapshot.frame = frame;
     } completion:^(BOOL finished) {

@@ -38,6 +38,7 @@
         
         // Move the image view
         imageSnapshot.frame = [containerView convertRect:cell.imageView.frame fromView:cell.imageView.superview];
+        imageSnapshot.alpha = 0.0;
     } completion:^(BOOL finished) {
         // Clean up
         [imageSnapshot removeFromSuperview];
